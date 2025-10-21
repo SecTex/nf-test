@@ -1,0 +1,114 @@
+{
+  "name": "angular-material-shell",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {},
+  "sourceRoot": "apps/angular-material-shell/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {},
+      "configurations": {
+        "production": {
+          "target": "angular-material-shell:esbuild:production"
+        },
+        "development": {
+          "target": "angular-material-shell:esbuild:development",
+          "dev": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "angular-material-shell:serve-original:development",
+        "buildNotifications": {
+          "enable": true
+        },
+        "rebuildDelay": 0,
+        "dev": true,
+        "port": 0
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular/build:extract-i18n"
+    },
+    "test": {
+      "executor": "@angular/build:karma",
+      "options": {
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/angular-material-shell/tsconfig.spec.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/angular-material-shell/public"
+          }
+        ],
+        "styles": ["apps/angular-material-shell/src/styles.css"],
+        "scripts": []
+      }
+    },
+    "esbuild": {
+      "executor": "@angular/build:application",
+      "options": {
+        "outputPath": "dist/apps/angular-material-shell",
+        "index": "apps/angular-material-shell/src/index.html",
+        "browser": "apps/angular-material-shell/src/main.ts",
+        "polyfills": ["zone.js", "es-module-shims"],
+        "tsConfig": "apps/angular-material-shell/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/angular-material-shell/public"
+          }
+        ],
+        "styles": [
+          "@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/angular-material-shell/src/styles.css"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kB",
+              "maximumError": "1MB"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kB",
+              "maximumError": "8kB"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production",
+      "outputs": ["{options.outputPath}"]
+    },
+    "serve-original": {
+      "executor": "@angular/build:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "angular-material-shell:esbuild:production"
+        },
+        "development": {
+          "buildTarget": "angular-material-shell:esbuild:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4201
+      }
+    }
+  }
+}

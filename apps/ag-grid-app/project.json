@@ -1,0 +1,108 @@
+{
+  "name": "ag-grid-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {},
+  "sourceRoot": "apps/ag-grid-app/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {},
+      "configurations": {
+        "production": {
+          "target": "ag-grid-app:esbuild:production"
+        },
+        "development": {
+          "target": "ag-grid-app:esbuild:development",
+          "dev": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "ag-grid-app:serve-original:development",
+        "rebuildDelay": 0,
+        "dev": true,
+        "port": 0
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular/build:extract-i18n"
+    },
+    "test": {
+      "executor": "@angular/build:karma",
+      "options": {
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/ag-grid-app/tsconfig.spec.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/ag-grid-app/public"
+          }
+        ],
+        "styles": ["apps/ag-grid-app/src/styles.css"],
+        "scripts": []
+      }
+    },
+    "esbuild": {
+      "executor": "@angular/build:application",
+      "options": {
+        "outputPath": "dist/apps/ag-grid-app",
+        "index": "apps/ag-grid-app/src/index.html",
+        "browser": "apps/ag-grid-app/src/main.ts",
+        "polyfills": ["zone.js", "es-module-shims"],
+        "tsConfig": "apps/ag-grid-app/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/ag-grid-app/public"
+          }
+        ],
+        "styles": ["apps/ag-grid-app/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kB",
+              "maximumError": "1MB"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kB",
+              "maximumError": "8kB"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production",
+      "outputs": ["{options.outputPath}"]
+    },
+    "serve-original": {
+      "executor": "@angular/build:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "ag-grid-app:esbuild:production"
+        },
+        "development": {
+          "buildTarget": "ag-grid-app:esbuild:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4200
+      }
+    }
+  }
+}

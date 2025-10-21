@@ -2,7 +2,6 @@
 
 Demonstrates the Usage of Native Federation and several well-known component libraries for Angular.
 
-
 ## Covered Component Libraries
 
 - ag-grid
@@ -26,18 +25,18 @@ As not each UI library always officially supports the latest Angular version, we
 
 ## Transitive Flag
 
-For the _primeng_ and _ag-grid_ demo, we need to activate the `transient` flag to get transitive dependencies shared separately. 
+For the _primeng_ and _ag-grid_ demo, we need to activate the `transient` flag to get transitive dependencies shared separately.
 
 ```javascript
   [...]
   shared: {
-    ...shareAll({ 
-        singleton: true, 
-        strictVersion: true, 
-        requiredVersion: 'auto', 
+    ...shareAll({
+        singleton: true,
+        strictVersion: true,
+        requiredVersion: 'auto',
 
         // Activate transient flag
-        transient: true 
+        transient: true
     }),
   },
   [...]
