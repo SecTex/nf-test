@@ -1,1 +1,1 @@
-export * from './lib/utility/utility';
+export * from './lib/providers';

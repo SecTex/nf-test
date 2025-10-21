@@ -18,7 +18,7 @@
     "paths": {
       "@myorg/utility": ["libs/utility/src/index.ts"]
     },
-    "baseUrl": ".",
+    "baseUrl": "./",
     "rootDir": "."
   },
   "angularCompilerOptions": {
