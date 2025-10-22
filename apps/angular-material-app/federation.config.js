@@ -9,7 +9,7 @@ module.exports = withNativeFederation({
   name: 'angular-material-app',
 
   exposes: {
-    './Component': './projects/angular-material-app/src/app/app.component.ts',
+    './Component': './apps/angular-material-app/src/app/app.component.ts',
   },
 
   shared: {

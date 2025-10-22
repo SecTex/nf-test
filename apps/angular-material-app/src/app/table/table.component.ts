@@ -1,10 +1,11 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+import { LocalizationPipe } from '@myorg/utility';
 
 @Component({
   selector: 'app-table',
-  imports: [MatTableModule, MatSortModule],
+  imports: [MatTableModule, MatSortModule, LocalizationPipe],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css',
 })
