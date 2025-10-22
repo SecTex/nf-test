@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { LocalizationPipe } from '@abp/ng-core';
+import { LocalizationPipe } from '@abp/ng.core';
 
 @Component({
   selector: 'app-table',

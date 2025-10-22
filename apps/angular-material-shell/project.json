@@ -5,7 +5,7 @@
   "generators": {},
   "sourceRoot": "apps/angular-material-shell/src",
   "prefix": "app",
-  "implicitDependencies": ["utility"],
+  "implicitDependencies": ["core"],
   "targets": {
     "build": {
       "executor": "@angular-architects/native-federation:build",
