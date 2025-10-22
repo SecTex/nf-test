@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-import { Environment, provideAbpCore, withOptions } from '@myorg/utility';
+import { Environment, provideAbpCore, withOptions } from '@abp/ng-core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,7 +26,7 @@ export const appConfig: ApplicationConfig = {
         } as Environment,
         registerLocaleFn: () => Promise.resolve(),
         sendNullsAsQueryParam: false,
-        skipGetAppConfiguration: false,
+        skipGetAppConfiguration: true,
       })
     ),
   ],

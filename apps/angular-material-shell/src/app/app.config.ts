@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-import { Environment, provideAbpCore, withOptions } from '@myorg/utility';
+import { Environment, provideAbpCore, withOptions } from '@abp/ng-core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,13 +20,13 @@ export const appConfig: ApplicationConfig = {
           apis: {
             default: {
               url: 'https://localhost:44300',
-              rootNamespace: 'Lis.Abp'
+              rootNamespace: 'Volo.Abp'
             }
           }
         } as Environment,
         registerLocaleFn: () => Promise.resolve(),
         sendNullsAsQueryParam: false,
-        skipGetAppConfiguration: false,
+        skipGetAppConfiguration: true,
       })
     ),
   ],
