@@ -17,7 +17,7 @@
     "module": "ES2022",
     "sourceMap": true,
     "paths": {
-      "@abp/ng.core": ["libs/core/src/index.ts"]
+      "@abp/ng-core": ["libs/core/src/index.ts"]
     },
     "baseUrl": ".",
     "rootDir": "."
