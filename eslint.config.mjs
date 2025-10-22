@@ -13,10 +13,8 @@ export default [
       '@nx/enforce-module-boundaries': [
         'error',
         {
-          enforceBuildableLibDependency: false,
-          allowCircularSelfDependency: false,
           banTransitiveDependencies: true,
-          allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?[jt]s$'],
+          allow: [String.raw`^.*/eslint(\.base)?\.config\.[cm]?[jt]s$`],
           depConstraints: [
             {
               sourceTag: '*',
@@ -24,7 +22,7 @@ export default [
             },
           ],
         },
-      ],
+      ]
     },
   },
   {
@@ -39,6 +37,9 @@ export default [
       '**/*.mjs',
     ],
     // Override or add rules here
-    rules: {},
+    rules: {      
+      '@typescript-eslint/no-namespace': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
+    },
   },
 ];

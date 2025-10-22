@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { of, Subscription, timer } from 'rxjs';
 import { SubscriptionService } from '../services/subscription.service';
 

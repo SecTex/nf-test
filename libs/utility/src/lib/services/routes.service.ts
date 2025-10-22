@@ -1,4 +1,4 @@
-import { Injectable, Injector, OnDestroy } from '@angular/core';
+import { inject, Injectable, Injector, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription, map } from 'rxjs';
 import { ABP } from '../models/common';
 import { OTHERS_GROUP } from '../tokens';
@@ -200,6 +200,7 @@ export abstract class AbstractNavTreeService<T extends ABP.Nav>
   extends AbstractTreeService<T>
   implements OnDestroy
 {
+  protected injector = inject(Injector);
   private subscription: Subscription;
   private permissionService: PermissionService;
   private compareFunc;
@@ -210,15 +211,15 @@ export abstract class AbstractNavTreeService<T extends ABP.Nav>
     return this.compareFunc(a, b);
   };
 
-  constructor(protected injector: Injector) {
+  constructor() {
     super();
     const configState = this.injector.get(ConfigStateService);
     this.subscription = configState
       .createOnUpdateStream(state => state)
       .subscribe(() => this.refresh());
-    this.permissionService = injector.get(PermissionService);
-    this.othersGroup = injector.get(OTHERS_GROUP);
-    this.compareFunc = injector.get(SORT_COMPARE_FUNC);
+    this.permissionService = this.injector.get(PermissionService);
+    this.othersGroup = this.injector.get(OTHERS_GROUP);
+    this.compareFunc = this.injector.get(SORT_COMPARE_FUNC);
   }
 
   protected isGranted({ requiredPolicy }: T): boolean {

@@ -1,4 +1,4 @@
-// eslint-disable-next-line @nx/enforce-module-boundaries
+ 
 import compare from 'just-compare';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { distinctUntilChanged, filter, map } from 'rxjs/operators';

@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-// eslint-disable-next-line @nx/enforce-module-boundaries
+ 
 import compare from 'just-compare';
 import { filter, take } from 'rxjs/operators';
 import { Session } from '../models/session';

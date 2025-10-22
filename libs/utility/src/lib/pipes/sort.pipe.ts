@@ -11,8 +11,8 @@ export class SortPipe implements PipeTransform {
 
     if (!value || (sortOrder !== 'asc' && sortOrder !== 'desc')) return value;
 
-    let numberArray = [];
-    let stringArray = [];
+    let numberArray: number[] | string[] = [];
+    let stringArray: number[] | string[] = [];
 
     if (!sortKey) {
       numberArray = value.filter(item => typeof item === 'number').sort();

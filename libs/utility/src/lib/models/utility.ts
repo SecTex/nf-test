@@ -9,7 +9,7 @@ export type DeepPartial<T> = Partible<T> extends never
 type Partible<T> = T extends Primitive | Array<any> | Node
   ? never
   : {
-      // eslint-disable-next-line @typescript-eslint/ban-types
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
       [K in keyof T]: T[K] extends Function ? never : T[K];
     } extends T
   ? T

@@ -11,7 +11,7 @@ export default [
         {
           ignoredFiles: ['{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}'],
         },
-      ],
+      ]
     },
     languageOptions: {
       parser: await import('jsonc-eslint-parser'),
@@ -38,6 +38,8 @@ export default [
           style: 'kebab-case',
         },
       ],
+      '@typescript-eslint/no-empty-function': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
     },
   },
   {

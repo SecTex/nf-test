@@ -46,7 +46,7 @@ describe('LocalStorageService', () => {
 
   it('should be called length', () => {
     const spy = jest.spyOn(service, 'length', 'get');
-    service.length;
+    void service.length;
     expect(spy).toHaveBeenCalled();
   });
 });

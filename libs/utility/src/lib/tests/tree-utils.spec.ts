@@ -141,6 +141,6 @@ interface TestCreateTreeNodeFilter {
 
 interface SearchModel {
   id: number;
-  pid?: number;
+  pid: number | null;
   name: string;
 }

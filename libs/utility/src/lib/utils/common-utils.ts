@@ -1,4 +1,5 @@
 export function noop() {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   const fn = function () {};
   return fn;
 }

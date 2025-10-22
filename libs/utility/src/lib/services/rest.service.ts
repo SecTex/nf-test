@@ -32,7 +32,7 @@ export class RestService {
 
   request<T, R>(
     request: HttpRequest<T> | Rest.Request<T>,
-    config?: Rest.Config,
+    config?: Rest.Config | null,
     api?: string,
   ): Observable<R> {
     config = config || ({} as Rest.Config);
